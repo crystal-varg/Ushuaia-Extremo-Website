@@ -1,0 +1,194 @@
+EVERSHOP ROUTING SYSTEM ANALYSIS - USHUAIA EXTREMO WEBSITE
+============================================================
+
+1. ROUTING ARCHITECTURE OVERVIEW
+--------------------------------
+
+This EverShop e-commerce project uses a multi-layered routing system. A request
+does not go directly from URL to React page; it passes through three layers:
+
+A. ROUTE DEFINITION LAYER (route.json files)
+   - Each page / API endpoint has a route.json file defining an INTERNAL URL
+     pattern.
+   - Example pattern:
+       { "methods": ["GET"], "path": "/category/:uuid", "name": "Category page" }
+   - Source:
+       node_modules/@evershop/evershop/src/modules/catalog/pages/frontStore/categoryView/route.json
+   - These routes are registered with the EverShop router on application start.
+
+B. URL REWRITE MAPPING LAYER (database-driven)
+   - A `url_rewrite` table maps user-facing URLs to internal route patterns.
+   - Schema (relevant columns):
+       request_path  -> what the visitor types in the browser
+       target_path   -> the internal route pattern to dispatch to
+       entity_uuid   -> the category/product/page UUID
+       entity_type   -> "category", "product", "cms_page", ...
+   - Example row:
+       request_path = "/tienda/bicicletas"
+       target_path  = "/category/{UUID}"
+   - Rows are created/updated automatically by event subscribers when a
+     category, product, or CMS page is saved.
+
+C. COMPONENT / PAGE LAYER (React components)
+   - Pages live in either:
+       node_modules/@evershop/evershop/src/modules/<module>/pages/<area>/<routeId>/
+     or in extensions:
+       extensions/<extension>/pages/<area>/<routeId>/
+   - Each page directory typically contains:
+       index.js       - server-side middleware (data loading, context setup)
+       *.jsx          - React component(s) rendered for this route
+       route.json     - the route registration (only in core; extensions hook
+                        into existing core routes)
+
+D. LAYOUT / AREA SYSTEM
+   - Pages export a `layout` object, e.g. { areaId: "content", sortOrder: 10 }.
+   - Components are slotted into named areas and rendered by sortOrder, which
+     is how multiple extensions can contribute to the same page.
+
+
+2. WHERE THE /tienda/ PREFIX COMES FROM
+----------------------------------------
+
+The `/tienda/` prefix is NOT defined in any route.json. It comes from two
+different places, and both must be understood:
+
+A. DYNAMICALLY GENERATED FROM THE url_rewrite TABLE
+   - When a category is saved, a subscriber walks up the parent chain and
+     concatenates each category's `url_key` to build the final request_path.
+   - File:
+       node_modules/@evershop/evershop/src/modules/catalog/subscribers/category_created/buildUrlRewrite.js
+   - Companion files for update/delete:
+       node_modules/@evershop/evershop/src/modules/catalog/subscribers/category_updated/builUrlRewrite.js
+       node_modules/@evershop/evershop/src/modules/catalog/subscribers/category_deleted/deleteUrlRewrite.js
+   - The DB trigger BUILD_CATEGORY_URL_KEY_TRIGGER (created by the migration
+     Version-1.0.2.js) auto-fills `url_key` from the category name if blank:
+       node_modules/@evershop/evershop/src/modules/catalog/migration/Version-1.0.2.js
+   - Conclusion: if a parent category exists with url_key = "tienda" and a
+     child category with url_key = "bicicletas", the rewrite system will
+     produce request_path = "/tienda/bicicletas" automatically.
+
+B. HARDCODED IN UI COMPONENTS
+   - These components do not generate URLs from data; they ship with literal
+     "/tienda/..." strings, so changing a category url_key alone will leave
+     these links pointing at the old URL. Edit the components if you rename:
+       extensions/main/components/HeaderMenu.jsx
+           line 15: <HeaderButton url="/tienda/bicicletas" ... />
+       extensions/main/pages/homepage/FeaturedRentals2.jsx
+           line 24: url="/tienda/bicicletas"
+       extensions/main/pages/frontStore/all/SubHeader.jsx
+           line 35: url="/tienda"
+
+
+3. REQUEST FLOW FOR /tienda/bicicletas
+---------------------------------------
+
+When a visitor opens /tienda/bicicletas:
+
+   1. Request arrives at the EverShop router with path /tienda/bicicletas.
+   2. URL-rewrite middleware looks up `url_rewrite` for
+      request_path = '/tienda/bicicletas'.
+   3. It finds target_path = '/category/<uuid>' and rewrites the request
+      internally.
+   4. The route /category/:uuid (registered by the core categoryView route.json)
+      matches. Its index.js runs as middleware.
+      File:
+        node_modules/@evershop/evershop/src/modules/catalog/pages/frontStore/categoryView/index.js
+      Behaviour:
+        - SELECT * FROM category WHERE uuid = :uuid
+        - Joins category_description for name, meta_title, description, ...
+        - Stores categoryId and page metadata on the request context.
+   5. The categoryView page's React components render. Project-level overrides
+      and additions live at:
+        extensions/main/pages/frontStore/categoryView/CategoryView.jsx
+        extensions/main/pages/frontStore/categoryView/Sorting.jsx
+   6. The visitor sees /tienda/bicicletas in the address bar - the internal
+      /category/<uuid> path is never exposed.
+
+
+4. HOW TO CREATE A WORKING /tienda/bicicletas CATEGORY URL
+-----------------------------------------------------------
+
+Recommended (no code changes required):
+
+   1. Open the admin panel -> Catalog -> Categories.
+   2. Create the parent category:
+        Name:    Tienda
+        URL Key: tienda
+        Save.
+   3. Create the child category:
+        Name:            Bicicletas
+        URL Key:         bicicletas
+        Parent Category: Tienda
+        Save.
+
+What happens behind the scenes:
+
+   - BUILD_CATEGORY_URL_KEY_TRIGGER fills url_key from the name if you leave it
+     blank.
+   - The category_created subscriber buildUrlRewrite.js:
+        * walks the parent chain ("bicicletas" -> "tienda"),
+        * concatenates url_keys ("/tienda/bicicletas"),
+        * inserts a row into url_rewrite with target_path = "/category/<uuid>".
+   - On the next request to /tienda/bicicletas, the URL rewrite layer finds
+     this row and dispatches to the categoryView page.
+
+If the category already exists but the URL still 404s:
+
+   - Check the url_rewrite table for a row with the expected request_path.
+   - Confirm both categories have non-empty url_key values.
+   - Confirm both categories are enabled / active.
+   - Confirm the child's parent_id points at the Tienda category.
+
+If you want to RENAME the prefix later (for example, /shop/bicicletas):
+
+   - Change the parent category's url_key from "tienda" to "shop"; the
+     subscriber will rewrite the table entries.
+   - Also update the hardcoded strings listed in section 2.B, otherwise menu
+     links will continue pointing at the old URL.
+
+
+5. KEY FILES (PATH REFERENCE)
+------------------------------
+
+Core route definitions and middleware (read-only, in node_modules):
+   node_modules/@evershop/evershop/src/modules/catalog/pages/frontStore/categoryView/route.json
+   node_modules/@evershop/evershop/src/modules/catalog/pages/frontStore/categoryView/index.js
+
+URL rewrite generation (event subscribers):
+   node_modules/@evershop/evershop/src/modules/catalog/subscribers/category_created/buildUrlRewrite.js
+   node_modules/@evershop/evershop/src/modules/catalog/subscribers/category_updated/builUrlRewrite.js
+   node_modules/@evershop/evershop/src/modules/catalog/subscribers/category_deleted/deleteUrlRewrite.js
+
+Database schema and triggers:
+   node_modules/@evershop/evershop/src/modules/catalog/migration/Version-1.0.2.js
+       - creates the url_rewrite table
+       - creates BUILD_CATEGORY_URL_KEY_TRIGGER
+
+Project-level (this repo) overrides and customisations:
+   extensions/main/pages/frontStore/categoryView/CategoryView.jsx
+   extensions/main/pages/frontStore/categoryView/Sorting.jsx
+
+Hardcoded /tienda links to keep in sync with category url_keys:
+   extensions/main/components/HeaderMenu.jsx              (line 15)
+   extensions/main/pages/homepage/FeaturedRentals2.jsx    (line 24)
+   extensions/main/pages/frontStore/all/SubHeader.jsx     (line 35)
+
+Configuration:
+   config/default.json
+
+
+6. NOTES AND GOTCHAS
+---------------------
+
+   - URL rewrites are automatic. You normally do NOT edit url_rewrite by
+     hand; saving the category in admin (or firing the corresponding event)
+     repopulates it.
+   - url_key values must be unique per scope; the database enforces this.
+   - Hierarchical URLs are produced by walking the parent chain at write
+     time, not at request time, so deeply nested URLs cost no extra lookups.
+   - The url_rewrite table supports multiple languages via a language column;
+     the same category can have different request_paths per language.
+   - The internal /category/:uuid route is never user-visible. Treat it as
+     an implementation detail.
+   - Hardcoded UI links (HeaderMenu, FeaturedRentals2, SubHeader) are NOT
+     refreshed when you change a category url_key - update them manually.

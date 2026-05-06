@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\\\.js$\")",
+      "Bash(xargs grep -l \"url_rewrite\")",
+      "Bash(xargs grep -l \"request_path\\\\|target_path\")",
+      "Bash(node -e \"console.log\\(require.resolve\\('pg'\\)\\)\")",
+      "Bash(node -e \"try { console.log\\(require.resolve\\('dotenv'\\)\\); } catch\\(e\\) { console.log\\('NOT_FOUND'\\); }\")",
+      "Bash(node seed-bikes.js)",
+      "Bash(node -e ' *)"
+    ]
+  }
+}
