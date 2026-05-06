@@ -60,6 +60,13 @@ async function main() {
         [productId, name, urlKey]
       );
 
+      await client.query(
+        `INSERT INTO product_inventory
+           (product_inventory_product_id, qty, manage_stock, stock_availability)
+         VALUES ($1, 0, FALSE, TRUE)`,
+        [productId]
+      );
+
       inserted += 1;
     }
 
