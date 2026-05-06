@@ -457,8 +457,8 @@ export default function HomeSetting({ saveSettingApi, setting, uploadApi }) {
                     setOtherServicesImages(
                       otherServicesImages.concat(imageArray.map((i) => i.url))
                     );
-                    setBykesAndAccesoriesImagesLinks([
-                      ...bykesAndAccesoriesImagesLinks,
+                    setOtherServicesImagesLinks([
+                      ...otherServicesImagesLinks,
                       "",
                     ]);
                   }}
@@ -466,8 +466,8 @@ export default function HomeSetting({ saveSettingApi, setting, uploadApi }) {
                     setOtherServicesImages(
                       otherServicesImages.filter((i) => i !== imageId)
                     );
-                    setBykesAndAccesoriesImagesLinks(
-                      bykesAndAccesoriesImagesLinks.filter(
+                    setOtherServicesImagesLinks(
+                      otherServicesImagesLinks.filter(
                         (i, ind) => ind !== index
                       )
                     );

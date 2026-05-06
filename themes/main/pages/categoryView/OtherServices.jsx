@@ -11,7 +11,7 @@ export default function FeaturedExcursions({
     url: otherServicesImagesLinks[index],
   }));
   
-  if (categories.lenght <= 0) return <></>;
+  if (categories.length <= 0) return <></>;
 
   return (
     <FeaturedRental
