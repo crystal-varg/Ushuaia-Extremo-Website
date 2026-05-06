@@ -1,0 +1,5 @@
+{
+  "methods": ["POST"],
+  "path": "/contact2",
+  "access": "public"
+}

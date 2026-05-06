@@ -1,0 +1,5 @@
+{
+  "methods": ["POST"],
+  "path": "/mercadopago/confirm",
+  "access": "public"
+}

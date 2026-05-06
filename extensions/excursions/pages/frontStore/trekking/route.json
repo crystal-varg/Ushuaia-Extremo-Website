@@ -1,0 +1,5 @@
+{
+  "path": "/excursiones/trekking",
+  "methods": ["GET"],
+  "access": "public"
+}

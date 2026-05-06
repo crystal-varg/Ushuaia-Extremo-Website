@@ -1,0 +1,56 @@
+.basic-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+.basic-header h3 {
+  font-family: 'Zuume';
+  font-size: 2rem;
+  padding-inline: 2rem;
+  text-align: center;
+  width: 45%;
+  font-weight: 500;
+}
+
+.ushuaia-extreme-logo {
+  width: 50px;
+}
+.main_info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  align-items: start;
+  justify-items: center;
+  width: 100%;
+  padding: 20px 0;
+  margin-top: 3rem;
+}
+
+.items-options {
+  display: grid;
+  justify-items: center;
+  font-size: larger;
+  font-weight: 600;
+  color: gray;
+  padding-inline: 10px;
+  p {
+    text-align: center;
+    width: 70%;
+    padding-top: 5px;
+    font-family: "Monumental";
+    font-size: 10px;
+    letter-spacing: .2ch;
+  }
+}
+
+@media (width < 700px){
+    .basic-header h3{
+        width: auto; 
+    }
+    .items-options p {
+        font-size: 8px;
+    }
+}
+

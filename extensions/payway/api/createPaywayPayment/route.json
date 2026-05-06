@@ -1,0 +1,5 @@
+{
+  "methods": ["POST"],
+  "path": "/payway/payment",
+  "access": "public"
+}

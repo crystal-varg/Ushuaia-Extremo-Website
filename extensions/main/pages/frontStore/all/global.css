@@ -1,0 +1,55 @@
+/* Fonts */
+
+@font-face {
+  font-family: "Zuume";
+  src: url("/fonts/ZuumeRough-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Zuume";
+  src: url("/fonts/ZuumeRough-Bold.ttf") format("truetype");
+
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Monumental";
+  src: url("/fonts/monument-extended-bold.ttf") format("truetype");
+
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Monumental";
+  src: url("/fonts/MonumentExtended-Ultrabold.otf") format("opentype");
+
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Monumental";
+  src: url("/fonts/MONUMENT-EXTENDED-22.TTF") format("truetype");
+
+  font-weight: normal;
+  font-style: normal;
+}
+/* 
+@font-face {
+  font-family: "Monumental";
+  src: url("/fonts/monument-extended-2.ttf") format("truetype");
+
+  font-weight: lighter;
+  font-style: normal;
+} */
+
+.monumental {
+  font-family: "monumental";
+}
+
+.zuume {
+  font-family: "zuume";
+}

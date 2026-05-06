@@ -1,0 +1,5 @@
+extend type Setting {
+  mercadopagoPaymentStatus: Int
+  mercadopagoDislayName: String
+  mercadopagoPublishableKey: String
+}

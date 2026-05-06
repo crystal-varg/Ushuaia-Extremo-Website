@@ -1,0 +1,46 @@
+.categories-container {
+  font-family: "Monumental";
+  text-align: center;
+  padding: 20px 22px;
+  background-color: #ea0606;
+  color: #fff;
+  height: 70%;
+  h2 {
+    font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+    padding-inline: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+  }
+  p {
+    font-size: 10px;
+    margin-block: 1rem;
+    font-weight: 400;
+  }
+  .categories {
+    margin-top: 25px;
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(160px, 1fr));
+    grid-template-rows: repeat(2, minmax(140px, 1fr));
+    justify-content: center;
+    align-items: center;
+    .categories_items {
+      height: 140px;
+      background-color: #fff;
+      border-radius: 3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .categories-container {
+    .categories {
+      grid-template-columns: repeat(2, minmax(120px, 1fr));
+      grid-template-rows: repeat(3, minmax(100px, 1fr));
+    }
+  }
+}

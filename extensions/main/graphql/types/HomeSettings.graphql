@@ -1,0 +1,13 @@
+extend type Setting {
+  sliderImages: [String]
+  sliderImagesLinks: [String]
+  rentalImages: [String]
+  rentalImagesTitles: [String]
+  rentalImagesLinks: [String]
+  bykesAndAccesoriesImages: [String]
+  bykesAndAccesoriesImagesTitles: [String]
+  bykesAndAccesoriesImagesLinks: [String]
+  otherServicesImages: [String]
+  otherServicesImagesLinks: [String]
+  sponsorsImages: [String]
+}

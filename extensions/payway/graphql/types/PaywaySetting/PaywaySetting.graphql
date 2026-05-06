@@ -1,0 +1,5 @@
+extend type Setting {
+  paywayPaymentStatus: Int
+  paywayDislayName: String
+  paywayPublishableKey: String
+}

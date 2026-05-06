@@ -1,0 +1,11 @@
+extend type Product {
+  featuredProduct: Boolean
+  featuredPackage: Boolean
+  priority: Int
+}
+
+extend type Query {
+  myFeaturedProducts(featuredProduct: Boolean): ProductCollection
+  featuredPackages(featuredPackage: Boolean): ProductCollection
+  productsBusiness(filters: [FilterInput]): ProductCollection
+}

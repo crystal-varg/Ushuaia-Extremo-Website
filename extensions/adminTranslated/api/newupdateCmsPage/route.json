@@ -1,0 +1,5 @@
+{
+  "methods": ["PATCH"],
+  "path": "/pages2/:id",
+  "access": "private"
+}

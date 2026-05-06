@@ -1,0 +1,12 @@
+extend type CmsPage {
+  is_blog: Boolean
+  featured: Boolean
+  category: String
+}
+
+extend type Query {
+  blogPages(filters: [FilterInput]): CmsPageCollection
+  featuredBlogPages(filters: [FilterInput]): CmsPageCollection
+  isBlog(id: Int): Boolean
+  blogCategories: [String]
+}

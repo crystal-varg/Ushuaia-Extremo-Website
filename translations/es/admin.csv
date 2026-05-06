@@ -1,0 +1,259 @@
+No results for,No hay resultados para
+Hello,Hola
+Dashboard,Panel de control
+New Product,Nuevo Producto
+New Category,Nueva Categoria
+New Coupon,Nuevo Cupón
+Products,Productos
+Categories,Categorías
+Collections,Colecciones
+Attributes,Atributos
+Orders,Pedidos
+Quick Links,Links Rapidos
+Catalog,Catalogo
+Sale,Venta
+Customer,Cliente
+Customers,Clientes
+Promotion,Promocion
+Setting,Configuración
+Coupons,Cupones
+Search,Buscar
+Pages,Páginas
+Widgets,Widgets
+Search,Buscar
+Sale Statistics,Estadísticas de ventas
+Daily,Diario
+Weekly,Semanal
+Monthly,Mensual
+Lifetime Sales,Ventas totales
+orders,pedidos
+lifetime sale,ventas acumuladas
+of orders completed,de pedidos completados
+of orders cancelled,de pedidos cancelados
+Best Sellers,Más Vendidos
+Look like you just started. No bestsellers yet.,Parece que acabás de empezar. Aún no hay productos más vendidos.
+All products,Todos los productos
+Create a new product,Crear un nuevo producto
+Editing widget,Editando widget
+No notes from customer,Sin notas del cliente
+Customer does not have any order yet.,Los clientes no tienen pedidos aún.
+Customer notes,Notas del cliente
+Ship Items,Enviar pedido
+Unknown,Desconocido
+Pending,Pendiente
+General,General
+Name,Nombre
+SKU,Código SKU
+Price,Precio
+Weight,Peso
+Category,Categoría
+Select category,Seleccionar categoría
+Tax class,Clase de impuesto
+None,Ninguno
+Description,Descripción
+Media,Medios
+Product status,Estado del producto
+Status,Estado
+Disabled,Deshabilitado
+Enabled,Habilitado
+Listed?,Listado?
+Visibility,Visibilidad
+Not visible,No visible
+New Page,Nueva pagina
+Not required, No requerido
+Required, Requerido
+Visible,Visible
+Inventory,Inventario
+Manage stock?,¿Gestionar stock?
+Yes,Sí
+No,No
+Product saved successfully,Producto guardado correctamente
+Stock availability,Disponibilidad de stock
+Quantity,Cantidad
+Attribute group,Grupo de atributos
+Default,Predeterminado
+Attributes,Atributos
+Search engine optimize,Optimización para motores de búsqueda
+Url key,Clave de URL
+Meta title,Título meta
+Meta keywords,Palabras clave meta
+Meta description,Descripción meta
+Cancel,Cancelar
+Save,Guardar
+Create a new coupon,Crear un nuevo cupón
+Coupon code,Código del cupón
+Enter coupon code,Ingresar código del cupón
+Enter description,Ingresar descripción
+Start date,Fecha de inicio
+End date,Fecha de fin
+Cancel Order,Cancelar pedido
+Discount amount,Monto del descuento
+Free shipping?,¿Envío gratis?
+Order created,Pedido Creado
+Activities,Actividad
+Customer was notified,El Cliente fue notificado
+Shipping,Envío
+Discount,Descuento
+Discount Type,Tipo de descuento
+Fixed discount to entire order,Descuento fijo al pedido completo
+Percentage discount to entire order,Descuento porcentual al pedido completo
+Fixed discount to specific products,Descuento fijo en productos específicos
+Percentage discount to specific products,Descuento porcentual en productos específicos
+Buy X get Y,Compra X y recibe Y
+Order conditions,Condiciones del pedido
+Minimum purchase amount,Monto mínimo de compra
+Enter minimum purchase amount,Ingresar monto mínimo de compra
+Minimum purchase qty,Cantidad mínima de compra
+Enter minimum purchase qty,Ingresar cantidad mínima de compra
+Order must contains product matched below conditions (All),El pedido debe contener productos que cumplan todas las siguientes condiciones
+Customer conditions,Condiciones del cliente
+Select,Seleccionar
+Customer email (empty for all),Correo del cliente (vacío para todos)
+Enter customer emails,Ingresar correos electrónicos de clientes
+Use comma when you have multi email,Separar por coma si hay varios correos
+Customer's purchase,Compra del cliente
+Enter purchased amount,Ingresar monto comprado
+Minimum purchased amount,Monto mínimo comprado
+Products,Productos
+Search,Buscar
+Status,Estado
+Product Type,Tipo de producto
+Clear filter,Limpiar filtro
+THUMBNAIL,Miniatura
+NAME,Nombre
+PRICE,Precio
+STOCK,Stock
+Show,Mostrar
+per page,por página
+records,registros
+CATEGORY NAME,Nombre de categoría
+INCLUDE IN MENU,Incluir en el menú
+COLLECTION NAME,Nombre de colección
+CODE,Código
+Attribute Name,Nombre del atributo
+Groups,Grupos
+Type,Tipo
+Is Required?,¿Es obligatorio?
+Is Filterable?,¿Es filtrable?
+Order Number,Número de pedido
+Date,Fecha
+Customer Email,Correo del cliente
+Shipment status,Estado del envío
+Shipment Status,Estado del envío
+Payment status,Estado de pago
+Payment Status,Estado de pago
+Total,Total
+FULL NAME,Nombre completo
+EMAIL,Correo electrónico
+CREATED AT,Creado en
+There is no page to display,No hay páginas para mostrar
+There is no customer to display,No hay clientes para mostrar
+Store Setting,Configuración de la Tienda
+Configure your store information,Configurá la información de tu tienda
+Payment Setting,Configuracion de Pagos
+Configure the available payment methods,Configurá los métodos de pago disponibles
+Shipping Setting,Configuracion de envios
+"Where you ship, shipping methods and delivery fee","A dónde enviás, métodos de envío y tarifa de entrega"
+Tax Setting,Configuracion de Impuestos
+Configure tax classes and tax rates,Configurá clases de impuestos y tasas
+Store Information,INFORMACIÓN DE LA TIENDA
+Store Name,Nombre de la tienda
+Store Description,Descripción de la tienda
+Contact Information,INFORMACIÓN DE CONTACTO
+Store Phone Number,Teléfono de la tienda
+Store Email,Correo electrónico de la tienda
+ADDRESS,DIRECCIÓN
+Country,País
+Address,Domicilio
+City,Ciudad
+Province,Provincia
+PostalCode,Código Postal
+Stripe Payment,Pago con Stripe
+Enable?,¿Activar?
+Display Name,Nombre mostrado
+Payment mode,Modo de pago
+Paypal Payment,Pago con PayPal
+MercadoPago Payment,Pago con MercadoPago
+Client ID,ID del cliente
+Environment,Entorno
+Sandbox,Sandbox
+Live,En vivo
+Cash On Delivery Payment,Pago contra entrega
+Create a shipping zone,Crear una zona de envío
+ZONE NAME,NOMBRE DE ZONA
+Enter zone name,Ingresar nombre de zona
+COUNTRY,PAÍS
+PROVINCES/STATES,PROVINCIAS/ESTADOS
+Shipping address,Dirección de envío
+Billing address,Dirección de facturación
+Store address,Dirección de la tienda
+TAX,IMPUESTOS
+Shipping tax class,Clase de impuestos para envío
+Base calculation address,Dirección base de cálculo
+Please select,Por favor seleccioná
+None,Ninguno
+Proportional allocation based on cart items,Asignación proporcional basada en artículos del carrito
+Highest tax rate based on cart items,Tasa de impuesto más alta basada en artículos del carrito
+Taxable Goods,Bienes grabados
+Tax classes,Clases de impuestos
+TAXABLE GOODS,BIENES GRAVADOS
+Name,Nombre
+Rate,Tasa
+Compound,Compuesto
+Priority,Prioridad
+Action,Acción
+Edit,Editar
+Editing,Editando
+Delete,Eliminar
++ Add Rate,+ Agregar tasa
+Create new tax class,Crear nueva clase de impuesto
+TRY OTHER RESOURCES,INTENTA OTRA BUSQUEDA
+New Excursion,Nueva Excursion
+Featured Product,Producto Destacado
+Feature as Product,Destacar como Producto
+Feature as Package,Destacar como Promoción
+Delete image,Eliminar imagen
+Insert image,Insertar imagen
+Upload image,Subir imagen
+Create,Crear
+New folder,Nueva carpeta
+You are here:,Estas aca
+Root,Raiz
+There is no file to display.,No hay archivos para mostrar
+Published?,Publicado?
+Priority,Prioridad
+Blog Entries,Entradas del Blog
+New Entry,Nueva Entrada
+Change,Cambiar
+Unassign,Desasignar
+selected,seleccionado
+Disable,Deshabilitar
+Enable,Habilitar
+Delete,Borrar
+Thumbnail,Imagen
+Home Setting,Configuracion de la home
+Configure images in the homepage,Configura las imagenes en la homepage
+Unlink,Desasignar
+Add image,Añadir Imagen
+click to upload an image,click para subir una imagen
+Category banner,Banner de Categoria
+Show Products?,Mostrar Productos?
+Include In Store Menu,Incluir en el menu de la tienda
+Type / to see the available blocks,Escribe / para ver las opciones disponibles de bloques
+Variant,Variante
+This product has some variants like color or size?,Este producto tiene variantes como color o tamaño?
+Create a variant group,Crear grupo de variante
+No collections,No hay colecciones
+Select the list of attribute,Selecciona la lista de atributos
+There is no Select attribute available.,No hay ningun atributo disponible de tipo Select
+New Attribute,Nuevo Atributo
+Create a new attribute,Crear nuevo atributo
+Attribute code,Codigo de atributo
+Attribute options,Opciones de atributo
+Show to customers?,¿Mostrar a clientes?
+Sort order,Orden de atributo
+Create a new group,Crear un nuevo grupo
+Select groups the attribute belongs to,Selecciona los grupos de atributos a los que pertenece
+Attribute Group,Grupo de Atributos
+Add option,Añadir opcion
+Remove option,Borrar opcion

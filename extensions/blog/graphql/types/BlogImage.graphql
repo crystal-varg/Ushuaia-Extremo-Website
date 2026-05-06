@@ -1,0 +1,4 @@
+extend type CmsPage {
+  image: Image
+  gallery: [Image]
+}
